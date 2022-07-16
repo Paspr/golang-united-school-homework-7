@@ -4,6 +4,7 @@ import (
 	"os"
 	"testing"
 	"time"
+	"reflect"
 )
 
 // DO NOT EDIT THIS FUNCTION
@@ -67,4 +68,25 @@ func TestLess(t *testing.T) {
 	if people.Less(0, 3) {
 		t.Errorf("should be identical")
 	}
+}
+
+func TestSwap(t *testing.T) {
+	timeOne := time.Date(2022, time.April, 1, 0, 0, 0, 0, time.UTC)
+
+	people := People{
+		Person{firstName: "A", lastName: "C", birthDay: timeOne},
+		Person{firstName: "A", lastName: "A", birthDay: timeOne},
+	}
+
+	people2 := People{
+		Person{firstName: "A", lastName: "A", birthDay: timeOne},
+		Person{firstName: "A", lastName: "C", birthDay: timeOne},
+	}
+
+	people.Swap(0, 1)
+
+	if !reflect.DeepEqual(people, people2) {
+		t.Errorf("swap order is not right")
+	}
+
 }
