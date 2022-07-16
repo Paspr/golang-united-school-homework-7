@@ -2,6 +2,7 @@ package coverage
 
 import (
 	"os"
+	"testing"
 )
 
 // DO NOT EDIT THIS FUNCTION
@@ -17,4 +18,24 @@ func init() {
 }
 
 // WRITE YOUR CODE BELOW
+
+func TestLen(t *testing.T) {
+	var people People
+
+	if people.Len() != 0 {
+		t.Errorf("length should be 0")
+	}
+
+	people = append(people, Person{})
+	
+	if people.Len() != 1 {
+		t.Errorf("length should be 1")
+	}
+
+	people = nil
+
+	if people != nil {
+		t.Errorf("should be nil value")
+	}
+}
 
