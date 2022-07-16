@@ -97,3 +97,12 @@ func TestNew(t *testing.T) {
 		t.Errorf("different rows length")
 	}
 }
+
+func TestRows(t *testing.T) {
+	matrix, _ := New("1 2 3\n 4 5 6")
+	expect := [][]int{ {1,2,3}, {4,5,6} }
+
+	if !reflect.DeepEqual(matrix.Rows(), expect) {
+		t.Errorf("matrix rows are wrong")
+	}
+}
