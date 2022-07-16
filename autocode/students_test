@@ -90,3 +90,10 @@ func TestSwap(t *testing.T) {
 	}
 
 }
+
+func TestNew(t *testing.T) {
+	matrix, error := New("1 2 \n 1 2 3")
+	if matrix != nil || error.Error() != "Rows need to be the same length" {
+		t.Errorf("different rows length")
+	}
+}
